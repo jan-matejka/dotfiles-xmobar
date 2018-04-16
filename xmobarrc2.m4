@@ -12,21 +12,19 @@ Config  { font = "xft:Dejavu Sans Mono:pixelsize=12"
                 , "-M", "20"
                 ] 10
 
---            -- TODO: this doesn't because it can't access mapper/root blockdevice
---            , Run DiskU [
---                ("sdb5", "DISK_TPL")
---                , ("/home", "DISK_TPL")
---                ] [
---                "-L", "20", "-H", "50"
---                , STD_VAL_COL
---                ] 20
+            , Run DiskU
+                [("/", "free: <free>")]
+                ["-L", "20", "-H", "200", INV_VAL_COL]
+                20
 
-
---            -- TODO: same as DiskU
---            , Run DiskIO [("sda", "<total>")] [] 10
-            ]
-
+            --  DiskIO shows nonsense values
+            -- with:
+            --    % dd if=/dev/zero of=foobar bs=4M count=2500
+            --    10485760000 bytes (10 GB, 9.8 GiB) copied, 11.6793 s, 898 MB/s
+            -- diskio write never went above 30M *shrug*
+            -- , Run DiskIO [("/", "io: r: <read> w: <write>")] [STD_VAL_COL] 10
+          ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%top% }{ %XMonadLog% "
+        , template = "%top% }{ <fc=LABEL>disk</fc>: %disku%"
         }
