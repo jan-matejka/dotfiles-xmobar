@@ -10,13 +10,7 @@ Config  { font = "xft:Dejavu Sans Mono:pixelsize=12"
                 , STD_VAL_COL
                 ] 9000
 
-            , Run Network "eth0" [
-                "-t", "NETWORK_TPL"
-                , "-L", "0", "-H", "32"
-                , STD_VAL_COL
-                ] 10
-
-            , Run Network "eth1" [
+            , Run Network "wlp59s0" [
                 "-t", "NETWORK_TPL"
                 , "-L", "0", "-H", "32"
                 , STD_VAL_COL
@@ -48,6 +42,6 @@ Config  { font = "xft:Dejavu Sans Mono:pixelsize=12"
         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%LKPR% | Batt: %battery% } %cpu% | %memory% | %swap% | %eth0% %eth1% { %date%"
+        , template = "%LKPR% | Batt: %battery% } %cpu% | %memory% | %swap% | %wlp59s0% { %date%"
         -- TODO: add unread mails, irc?
         }
