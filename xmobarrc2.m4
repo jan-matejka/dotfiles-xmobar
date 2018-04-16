@@ -24,9 +24,6 @@ Config  { font = "xft:Dejavu Sans Mono:pixelsize=12"
 
 --            -- TODO: same as DiskU
 --            , Run DiskIO [("sda", "<total>")] [] 10
-
-            , Run XMonadLog
-
             ]
 
         , sepChar = "%"
